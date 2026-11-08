@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://paten.local/contracts/patent.schema.json",
+  "title": "PatentRecord",
+  "type": "object",
+  "required": [
+    "patent_number",
+    "title",
+    "abstract"
+  ],
+  "properties": {
+    "patent_number": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Unique patent identifier, e.g. RU1234567C1"
+    },
+    "title": { "type": "string", "minLength": 1 },
+    "abstract": { "type": "string" },
+    "claims": { "type": "string", "default": "" },
+    "ipc_codes": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": []
+    },
+    "application_date": {
+      "type": ["string", "null"],
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "publication_date": {
+      "type": ["string", "null"],
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "status": { "type": "string", "default": "" },
+    "applicants": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": []
+    },
+    "inventors": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": []
+    }
+  },
+  "additionalProperties": false
+}
